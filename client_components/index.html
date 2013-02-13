@@ -1,0 +1,81 @@
+<!doctype html>
+<!--
+    Main Page
+    
+-->
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Funder</title>        
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="css/bootstrap-responsive.min.css" rel="stylesheet"/>
+        <style>
+            body{
+                padding-top:60px;
+                padding-bottom:40px;
+            }
+            .login .dropdown-menu{
+                text-align:center;
+                padding-left:6px;
+                padding-right:6px;
+            }
+        </style>
+    </head>
+    <body>        
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <button data-target=".nav-collapse" data-toggle="collapse" 
+                            class="btn btn-navbar collapsed" type="button">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="brand" href="/">Crowd Funder</a>
+                    <div class="nav-collapse collapse" style="height:0px;">
+                        <ul class="nav">
+                            <li class="active"><a href="#home">Home</a></li>
+                            <li class="divider-vertical"></li>
+                            <li><a href="#start">Start a project</a></li>
+                            <li><a href="#search">Vote for projects</a></li>
+                            <li class="divider-vertical"></li>
+                            <li><a href="#how">How we work</a></li>                            
+                        </ul>
+                        <ul class="nav pull-right">
+                            <li class="dropdown login">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    Login
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li></li><input type="text" class="span3" placeholder="Login"/></li>
+                                    <li><input type="password" class="span3" placeholder="Password"/></li>
+                                    <li>
+                                        <button class="btn" type="button">Login</button>
+                                        <button class="btn" type="button">Login with Facebook</button>                                            
+                                    </li>
+                                </ul>    
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>    
+        <div class="container-fluid">
+            <div class="row-fluid">
+                Stuff
+            </div>
+            <footer>
+                Copyright Gotrecha 2013
+            </footer>
+        </div>        
+        <!--Third Party Scripts-->
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <script src="js/bootstrap.min.js"></script>   
+        <script src="js/backbone.js"></script>
+        <!--Funder Scripts-->
+        
+    </body>
+    
+</html>
