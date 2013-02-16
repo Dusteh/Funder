@@ -10,71 +10,116 @@
         <link href="css/bootstrap.min.css" rel="stylesheet"/>
         <link href="css/bootstrap-responsive.min.css" rel="stylesheet"/>
         <style>
-            body{
-                padding-top:60px;
-                padding-bottom:40px;
-            }
-            .login .dropdown-menu{
+
+            .navbar .dropdown-menu{
                 text-align:center;
                 padding-left:6px;
                 padding-right:6px;
             }
+            
+            #content{
+                min-height:100%;
+                height:auto !important;
+                height:100%;
+                margin:4em auto 4em;
+            }
+            
         </style>
     </head>
-    <body>        
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container-fluid">
-                    <button data-target=".nav-collapse" data-toggle="collapse" 
-                            class="btn btn-navbar collapsed" type="button">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="brand" href="/">Crowd Funder</a>
-                    <div class="nav-collapse collapse" style="height:0px;">
-                        <ul class="nav">
-                            <li class="active"><a href="#home">Home</a></li>
-                            <li class="divider-vertical"></li>
-                            <li><a href="#start">Start a project</a></li>
-                            <li><a href="#search">Vote for projects</a></li>
-                            <li class="divider-vertical"></li>
-                            <li><a href="#how">How we work</a></li>                            
-                        </ul>
-                        <ul class="nav pull-right">
-                            <li class="dropdown login">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                    Login
-                                    <b class="caret"></b>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li></li><input type="text" class="span3" placeholder="Login"/></li>
-                                    <li><input type="password" class="span3" placeholder="Password"/></li>
-                                    <li>
-                                        <button class="btn" type="button">Login</button>
-                                        <button class="btn" type="button">Login with Facebook</button>                                            
-                                    </li>
-                                </ul>    
-                            </li>
-                        </ul>
+    <body>  
+        <div id="menu_bar">
+            
+        </div>        
+        <div class="container-fluid">
+            <div class="row-fluid" id="content">
+            
+            </div>
+            <footer class="navbar-fixed-bottom navbar">
+                <div class="navbar-inner">                
+                    <div class="container-fluid">                       
+                        <a class="brand" href="#copyright">Copyright Gotrecha 2013</a>
+                        <div class="nav-collapse collapse">
+                            
+                            <ul class="nav">                                
+                                <li class="divider-vertical"></li>
+                                <li><a href="#legal">Legal notice</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>    
-        <div class="container-fluid">
-            <div class="row-fluid">
-                Stuff
-            </div>
-            <footer>
-                Copyright Gotrecha 2013
             </footer>
         </div>        
         <!--Third Party Scripts-->
         <script src="http://code.jquery.com/jquery.js"></script>
-        <script src="js/bootstrap.min.js"></script>   
+        <script src="js/underscore.js"></script>        
         <script src="js/backbone.js"></script>
+        <script src="js/bootstrap.min.js"></script>   
         <!--Funder Scripts-->
+        <!--LIST MODEL/VIEW SCRIPTS FIRST-->
+        <script src="js/other/menu.js"></script>        
+        <script src="js/home/home.js"></script>        
+        <script src="js/search/search.js"></script>        
+        
+        <!--App Router-->
+        <script src="js/index/appRouter.js"></script>
+        
+        <!--Templates-->
+        <script id="temp_menu" type="text/template">
+          <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <button data-target=".nav-collapse" data-toggle="collapse" 
+                    class="btn btn-navbar collapsed" type="button">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="/">Crowd Funder</a>
+            <div class="nav-collapse collapse"> 
+                <ul class="nav">
+                    <li class="active"><a href="#home">Home</a></li>
+                    <li class="divider-vertical"></li>
+                    <li>
+                        <a href="#project/new">Start a project</a>                        
+                    </li>
+                    <li><a href="#search">Vote for projects</a></li>
+                    <li class="divider-vertical"></li>
+                    <li><a href="#how">How we work</a></li>                                                
+                </ul>                
+                <div class="navbar-form pull-right" id="login">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    
+        </script>
+        <script id="temp_menu_login" type="text/template">
+            <input type="text" id="login_text" class="span2" placeholder="Login..."/>
+            <input type="password" id="password" class="span2" placeholder="Password..."/>
+            <button class="btn" type="button" id="login_btn">Login</button>
+        </script>
+		<script id="temp_menu_loggedin" type="text/template">
+            <ul class="nav">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						<%=firstName%> <%=lastName%>
+						<b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu"><li><a href="#">First</a></li></ul>
+				</li>
+			</ul>
+        </script>
+        <script id="temp_home" type="text/template">
+            <div>
+                <p>You've been drinking tonight, and this is the last thing you're going to do related to funder
+                So here's the deal, you can include *.html files as the src for a script tag, which in you will place the html
+                that you need to do templates aka javascript includes</p>
+            </div>
+        </script>        
+        <script id="temp_search" type="text/template">
+            <div>Search</div>
+        </script>
         
     </body>
     
