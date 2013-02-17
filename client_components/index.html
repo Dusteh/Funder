@@ -87,7 +87,7 @@
                     <li class="divider-vertical"></li>
                     <li><a href="#how">How we work</a></li>                                                
                 </ul>                
-                <div class="navbar-form pull-right" id="login">
+                <div class="nav-collapse navbar-form pull-right" id="login">
                 </div>
             </div>
         </div>
@@ -95,9 +95,21 @@
 </div>    
         </script>
         <script id="temp_menu_login" type="text/template">
-            <input type="text" id="login_text" class="span2" placeholder="Login..."/>
-            <input type="password" id="password" class="span2" placeholder="Password..."/>
-            <button class="btn" type="button" id="login_btn">Login</button>
+			<ul class="nav">	
+				<li><input type="text" id="login_text" class="span2" placeholder="Login..."/></li>
+				<li class="divider-vertical"></li>
+				<li><input type="password" id="password" class="span2" placeholder="Password..."/></li>
+				<li class="divider-vertical"></li>
+				<li id="login_li">
+					<button class="btn" type="button" id="login_btn" style="margin-top:0px;">Login</button>
+					<a class="dropdown-toggle" type="button" data-toggle="dropdown" style="display:inline-block">
+						<b class="caret"></b>
+					</a>					
+					<ul class="dropdown-menu pull-right">
+						<li><a href="#">First</a></li>
+					</ul>										
+				</li>
+			</ul>
         </script>
 		<script id="temp_menu_loggedin" type="text/template">
             <ul class="nav">
@@ -105,8 +117,10 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<%=firstName%> <%=lastName%>
 						<b class="caret"></b>
-					</a>
-					<ul class="dropdown-menu"><li><a href="#">First</a></li></ul>
+					</a>					
+					<ul class="dropdown-menu pull-right">
+						<li><a href="#">First</a></li>
+					</ul>		
 				</li>
 			</ul>
         </script>

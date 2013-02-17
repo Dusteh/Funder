@@ -1,4 +1,5 @@
 var express = require('express');
+var everyAuth = require('everyauth');
 var app = express();
 
 app.use(express.logger('dev'));
@@ -50,12 +51,15 @@ app.get("/how",function(req,res,next){
 app.post("/login",function(req,res,next){
 	console.log('/login post');
 	res.end(JSON.stringify({
-		loggedIn:false,
+		loggedIn:true,
 		firstName:'Dusty',
 		lastName:'Hittenmiller',
 		username:'Dusteh'
 	}));
 });
+
+//Finalize Startup
+
 
 if(process.env.PORT == undefined || process.env.IP == undefined){
 	console.log('Listening on 8080');
