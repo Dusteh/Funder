@@ -19,13 +19,15 @@ var app;
                 "":"home",
                 "home":"home",
                 "search":"search",
-                "how":"how"
+                "how":"how",
+                "project":"project",
+                "project/new":"project"
             },
             home:function(){HomeClass.AppRouter(this)},            
             search:function(){SearchClass.AppRouter(this)},
-            how:function(){
-               console.log('How Called')
-            }
+            how:function(){HowClass.AppRouter(this)},
+            project:function(){console.log("In Projects");}
+            
         });
         app = new AppRouter();
         Backbone.history.start();

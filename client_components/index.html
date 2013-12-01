@@ -9,22 +9,9 @@
         <title>Funder</title>        
         <link href="css/bootstrap.min.css" rel="stylesheet"/>
         <link href="css/bootstrap-responsive.min.css" rel="stylesheet"/>
-        <style>
-
-            .navbar .dropdown-menu{
-                text-align:center;
-                padding-left:6px;
-                padding-right:6px;
-            }
-            
-            #content{
-                min-height:100%;
-                height:auto !important;
-                height:100%;
-                margin:4em auto 4em;
-            }
-            
-        </style>
+        <link href="css/funder.css" rel="stylesheet"/>
+        
+        
     </head>
     <body>  
         <div id="menu_bar">
@@ -44,7 +31,7 @@
                                 <li class="divider-vertical"></li>
                                 <li><a href="#legal">Legal notice</a></li>
                             </ul>
-                        </div>
+                        </div>
                     </div>
                 </div>
             </footer>
@@ -59,10 +46,9 @@
         <script src="js/other/menu.js"></script>        
         <script src="js/home/home.js"></script>        
         <script src="js/search/search.js"></script>        
-        
+        <script src="js/other/how.js"></script>
         <!--App Router-->
-        <script src="js/index/appRouter.js"></script>
-        
+        <script src="js/index/appRouter.js"></script>        
         <!--Templates-->
         <script id="temp_menu" type="text/template">
           <div class="navbar navbar-inverse navbar-fixed-top">
@@ -105,9 +91,9 @@
 					<a class="dropdown-toggle" type="button" data-toggle="dropdown" style="display:inline-block">
 						<b class="caret"></b>
 					</a>					
-					<ul class="dropdown-menu pull-right">
-						<li><a href="#">First</a></li>
-					</ul>										
+					<!--ul class="dropdown-menu pull-right">
+						<li><a href="#logout">Logout</a></li>
+					</ul-->										
 				</li>
 			</ul>
         </script>
@@ -119,7 +105,7 @@
 						<b class="caret"></b>
 					</a>					
 					<ul class="dropdown-menu pull-right">
-						<li><a href="#">First</a></li>
+						<li><a href="/logout">Logout</a></li>
 					</ul>		
 				</li>
 			</ul>
@@ -132,7 +118,26 @@
         <script id="temp_search" type="text/template">
             <div>Search</div>
         </script>
-        
+        <script id="temp_how" type="text/template">
+            <div class="content_container how">
+                <h3>How</h3>
+                <div>
+                    <span>How indeed, look at the FAQ to see if that answers your question, or feel free to submit a question of your own <a href="#question">here</a>
+                </div>
+                <hr/>
+                <ul class="faq-list">
+                    <li>
+                    <% _.each(qa,function(qa){%>
+                        <ul>
+                            <li>Q: <%=qa.Q%></li>
+                            <li>A: <%=qa.A%></li>
+                        </ul>
+                        <hr/>
+                    <%});%>                        
+                    </li>                    
+                </ul>
+            </div>
+        </script>
     </body>
     
 </html>

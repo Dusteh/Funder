@@ -19,6 +19,7 @@ var MenuClass = {};
 				loginModel.fetch({
 					type:'POST',
 					success:function(){
+                        console.log(loginModel.toJSON());
 						if(loginModel.toJSON().loggedIn){
 							var loggedIn = new MenuClass.LoggedInView({model:loginModel});
 							$(el).find("#login").html(loggedIn.render().el);
@@ -61,14 +62,23 @@ var MenuClass = {};
            login:function(event){
 				console.log('Login event');
 				var loginModel = new MenuClass.LoginModel();
+                
+                var el = MenuClass.MenuView.el;
 				loginModel.fetch({
+                    type:'POST',
 					data:{
 						userName:$("#login_text").val(),
 						password:$("#password").val()					
 					},
-					type:'POST',
+                    processData:true,
 					success:function(){
-						console.log('success');
+						if(loginModel.toJSON().loggedIn){
+    						var loggedIn = new MenuClass.LoggedInView({model:loginModel});
+							$(el).find("#login").html(loggedIn.render().el);
+						}else{
+							var login = new MenuClass.LoginView();
+							$(el).find("#login").html(login.render().el);
+						}
 					},
 					error:function(){
 						console.log('error');
@@ -90,6 +100,8 @@ var MenuClass = {};
 				this.model.bind('change',this.render,this);
 			},
 			render:function(eventName){
+                console.log("Menu LoggedInView:Render: ");
+                console.log(this.model.toJSON());
 				$(this.el).html(this.template(this.model.toJSON()));
 				return this;
 			}
@@ -106,8 +118,19 @@ var MenuClass = {};
         
         MenuClass.fixCSS = function(selectedMenu){
             console.log("Fixing CSS for "+selectedMenu)
-            $(MenuClass.menuView.el).find(".active").removeClass("active");
-            $(MenuClass.menuView.el).find("a[href='#"+selectedMenu+"']").parents("li").addClass("active");
+            if(MenuClass.fixCSSTimeout){
+                clearTimeout(MenuClass.fixCSSTimeout);
+            }
+            
+            if(MenuClass.menuView != undefined){
+                $(MenuClass.menuView.el).find(".active").removeClass("active");
+                $(MenuClass.menuView.el).find("a[href='#"+selectedMenu+"']").parents("li").addClass("active");
+            }else{//Wait till it is and then do it?
+                MenuClass.fixCSSTimeout = setTimeout(function() {
+                    MenuClass.fixCSS(selectedMenu);
+                }, 10);
+                
+            }
         }
         
         MenuClass.init();
